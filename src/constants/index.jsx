@@ -101,24 +101,24 @@ export const service = [
 
 export const checklistItems = [
   {
-    title: "Code merge made easy",
+    title: "nosotros",
     description:
-      "Track the performance of your VR apps and gain insights into user behavior.",
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic aliquid quas.",
   },
   {
-    title: "Review code without worry",
+    title: "mision ",
     description:
-      "Track the performance of your VR apps and gain insights into user behavior.",
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic aliquid quas.",
   },
   {
-    title: "AI Assistance to reduce time",
+    title: "vision",
     description:
-      "Track the performance of your VR apps and gain insights into user behavior.",
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic aliquid quas.",
   },
   {
-    title: "Share work in minutes",
+    title: "valores",
     description:
-      "Track the performance of your VR apps and gain insights into user behavior.",
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic aliquid quas.",
   },
 ];
 

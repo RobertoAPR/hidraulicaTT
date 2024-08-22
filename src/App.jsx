@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
 import Navbar from './components/Navbar';
 import PPrincipal from './components/PPrincipal';
 import AboutUs from './components/AboutUs';
 import Services from './components/Services';
+import Contacts from './components/Contacts';
+import Testimonials from './components/Testimonials';
+
 
 function App() {
   return (
@@ -12,6 +15,8 @@ function App() {
       <PPrincipal/>
       <AboutUs/>
       <Services/>
+      <Testimonials/>
+      <Contacts/>
      </div>
     </>
   );
