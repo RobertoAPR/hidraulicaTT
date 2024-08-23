@@ -17,46 +17,46 @@ import user6 from "../assets/profile-pictures/user6.jpg";
 export const navItems = [
   { label: "About us", href: "#" },
   { label: "Services", href: "#" },
-  { label: "History", href: "#" },
   { label: "Testimonials", href: "#" },
+  { label: "Contacts", href: "#" },
 ];
 
 export const testimonials = [
   {
-    user: "John Doe",
-    company: "Stellar Solutions",
+    user: "Nombre cliente",
+    company: "Compañia",
     image: user1,
-    text: "I am extremely satisfied with the services provided. The team was responsive, professional, and delivered results beyond my expectations.",
+    text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum, cum? Saepe, veniam. Provident hic consequuntur aperiam veniam? Explicabo.",
   },
   {
-    user: "Jane Smith",
-    company: "Blue Horizon Technologies",
+    user: "Nombre cliente",
+    company: "Compañia",
     image: user2,
-    text: "I couldn't be happier with the outcome of our project. The team's creativity and problem-solving skills were instrumental in bringing our vision to life",
+    text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum, cum? Saepe, veniam. Provident hic consequuntur aperiam veniam? Explicabo.",
   },
   {
-    user: "David Johnson",
-    company: "Quantum Innovations",
+    user: "Nombre Cliente",
+    company: "Compañia",
     image: user3,
-    text: "Working with this company was a pleasure. Their attention to detail and commitment to excellence are commendable. I would highly recommend them to anyone looking for top-notch service.",
+    text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum, cum? Saepe, veniam. Provident hic consequuntur aperiam veniam? Explicabo.",
   },
   {
-    user: "Ronee Brown",
-    company: "Fusion Dynamics",
+    user: "Nombre Cliente",
+    company: "Compañia",
     image: user4,
-    text: "Working with the team at XYZ Company was a game-changer for our project. Their attention to detail and innovative solutions helped us achieve our goals faster than we thought possible. We are grateful for their expertise and professionalism!",
+    text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum, cum? Saepe, veniam. Provident hic consequuntur aperiam veniam? Explicabo.",
   },
   {
-    user: "Michael Wilson",
-    company: "Visionary Creations",
+    user: "Nombre Cliente",
+    company: "Compañia",
     image: user5,
-    text: "I am amazed by the level of professionalism and dedication shown by the team. They were able to exceed our expectations and deliver outstanding results.",
+    text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum, cum? Saepe, veniam. Provident hic consequuntur aperiam veniam? Explicabo.",
   },
   {
-    user: "Emily Davis",
-    company: "Synergy Systems",
+    user: "Nombre Cliete",
+    company: "Compañia",
     image: user6,
-    text: "The team went above and beyond to ensure our project was a success. Their expertise and dedication are unmatched. I look forward to working with them again in the future.",
+    text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum, cum? Saepe, veniam. Provident hic consequuntur aperiam veniam? Explicabo.",
   },
 ];
 
