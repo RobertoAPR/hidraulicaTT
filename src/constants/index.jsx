@@ -15,10 +15,10 @@ import user5 from "../assets/profile-pictures/user5.jpg";
 import user6 from "../assets/profile-pictures/user6.jpg";
 
 export const navItems = [
-  { label: "About us", href: "#" },
-  { label: "Services", href: "#" },
-  { label: "Testimonials", href: "#" },
-  { label: "Contacts", href: "#" },
+  { label: "About us", href: "#AboutUs" },
+  { label: "Services", href: "#Services" },
+  { label: "Testimonials", href: "#Testimonials" },
+  { label: "Contacts", href: "#Contacts" },
 ];
 
 export const testimonials = [
