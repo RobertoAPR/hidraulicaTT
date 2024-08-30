@@ -51,6 +51,32 @@ const Navbar = () => {
                         </button>
                     </div>
                </div>
+               {mobileDrawerOpen &&(
+                    <div className="fixed right-0 z-20 bg-neutral-900 w-full p-12 flex flex-col justify-center items-center lg:hidden">
+                            <ul>
+                                    <li className="py-4">
+                                    <Link to="/about">About</Link>
+                                    </li>
+                                    <li className="py-4">
+                                        <Link to="/services">Services</Link>
+                                    </li>
+                                    <li className="py-4">
+                                        <Link to="/testimonials">Testimonials</Link>
+                                    </li>
+                                    <li className="py-4">
+                                        <Link to="/contacts">Contacts</Link>
+                                    </li>
+                            </ul>
+                            <div className="flex space-x-6">
+                        
+                              <Link to="/log" className="py-2 px-3 border rounded-md">Sign In</Link>
+                   
+                              <a href="#" className="bg-gradient-to-r from-orange-500 to-orange-800 py-2 px-3 rounded-md">
+                              Create an account
+                             </a>
+                             </div>
+                    </div>
+               )}
               
             </div>
             <Outlet/>
