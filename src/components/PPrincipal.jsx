@@ -1,5 +1,6 @@
 import hidraulicaMan from "../assets/hidraulicaMan.mp4";
 import hidraulicaMan1 from "../assets/hidraulicaMan1.mp4";
+import {Link, Outlet} from "react-router-dom";
 
 const PPrincipal = () => {
   
@@ -16,8 +17,9 @@ const PPrincipal = () => {
             </p>
             <div className="flex justify-center my-10">
                 <a href="#" className="bg-gradient-to-r from-orange-500 to-orange-800 py-3 px-4 mx-3 rounded-md">
-                Store
+                <Link to="/store" >Store</Link>
                 </a>
+                
                 <a href="#" className="py-3 px-4 mx-3 rounded-md border">
                     Boton 2
                 </a>

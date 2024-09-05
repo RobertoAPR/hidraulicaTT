@@ -24,18 +24,11 @@ const Navbar = () => {
                        </span>
                 </div>
                     <ul className="hidden lg:flex ml-14 space-x-12">
-                       <li>
-                        <Link to="/about">About</Link>
-                       </li>
-                       <li>
-                        <Link to="/services">Services</Link>
-                       </li>
-                       <li>
-                        <Link to="/testimonials">Testimonials</Link>
-                       </li>
-                       <li>
-                        <Link to="/contacts">Contacts</Link>
-                       </li>
+                    {navItems.map((item, index) =>(
+                        <li key={index} className="py-4">
+                            <a href={item.href}>{item.label}</a>
+                        </li>
+                    ))}
                     </ul>
                     <div className="hidden lg:flex justify-center space-x-12 items-center">
                         
@@ -54,18 +47,11 @@ const Navbar = () => {
                {mobileDrawerOpen &&(
                     <div className="fixed right-0 z-20 bg-neutral-900 w-full p-12 flex flex-col justify-center items-center lg:hidden">
                             <ul>
-                                    <li className="py-4">
-                                    <Link to="/about">About</Link>
-                                    </li>
-                                    <li className="py-4">
-                                        <Link to="/services">Services</Link>
-                                    </li>
-                                    <li className="py-4">
-                                        <Link to="/testimonials">Testimonials</Link>
-                                    </li>
-                                    <li className="py-4">
-                                        <Link to="/contacts">Contacts</Link>
-                                    </li>
+                            {navItems.map((item, index) =>(
+                                <li key={index} className="py-4">
+                                    <a href={item.href}>{item.label}</a>
+                                </li>
+                             ))}
                             </ul>
                             <div className="flex space-x-6">
                         

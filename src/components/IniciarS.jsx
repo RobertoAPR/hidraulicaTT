@@ -1,7 +1,18 @@
-import * as React from 'react'
+import Navbar from './Navbar';
+import Footer from './Footer';
+import { FaEye } from "react-icons/fa";
+import React, {useState} from "react"
+import { FaEyeSlash } from "react-icons/fa";
+import {Link, Outlet} from "react-router-dom";
 
 export default function IniciarS() {
+  const [showPassword,setShowPassword] = useState(false)
+
   return (
+    <>
+    <Navbar/>
+     <div className="max-w-7xl mx-auto pt-20 px-6">
+    
     <div >
       <div className=" w-full items-center justify-center ">
       <div className='bg-slate-800 px-10 py-20 rounded-3xl border-2 border-gray-100'>
@@ -11,16 +22,30 @@ export default function IniciarS() {
             <div>
               <label className='text-lg font-medium'>Email</label>
               <input 
-              className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent'
+              type='email' className='w-full h-full outline-none  bg-transparent'
               placeholder='Enter your email'
               />
             </div>
             <div>
               <label className='text-lg font-medium'>Password</label>
+              <div className='p-2 flex'>
               <input 
-              className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent'
+              type={showPassword ? "text":"password"} className='w-full h-full outline-none  bg-transparent'
               placeholder='Enter your Password'
               />
+              <div className='cursor-pointer text-xl' onClick={()=>setShowPassword((preve)=>!preve)}>
+                <span>
+                  {
+                    showPassword? (
+                      <FaEyeSlash/>
+                    ) : (
+                      <FaEye/>
+                    )
+                  }
+               
+                </span>
+              </div>
+              </div>
             </div>
             <div className='mt-8 flex justify-between items-center'>
               <div>
@@ -30,7 +55,11 @@ export default function IniciarS() {
                 />
                 <label className='ml-2 font-medium text-base' for="remember">Remember for 30 days</label>
               </div>
-              <button className='font-medium text-base text-orange-500'>Forgot password</button>
+              <button className='font-medium text-base text-orange-500 hover:underline hover:text-white'>
+                <Link to={'/forgot-password'}>
+                Forgot password
+                </Link>
+                </button>
             </div>
           </div>
           <div className='mt-8 flex flex-col gap-y-4'>
@@ -42,9 +71,13 @@ export default function IniciarS() {
               Sign in with Google
             </button>
           </div>
+          <p className='my-5'>Dont have account ? <Link to={"/sign-up"} className='text-orange-600 text-orange-700 hover:underline'>Sing up</Link></p>
       </div>
       </div>
    
     </div>
+    <Footer/>
+    </div>
+    </>
   )
 }
