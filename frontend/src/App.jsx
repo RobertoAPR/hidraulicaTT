@@ -6,22 +6,48 @@ import Services from './components/Services';
 import Contacts from './components/Contacts';
 import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
+import SummaryApi from './common';
+import IniciarS from './components/IniciarS';
+import { Outlet } from 'react-router-dom';
+import { useEffect } from 'react';
+import Context from './context';
+import { useDispatch } from 'react-redux';
+import { setUserDetails } from './store/userSlice';
+
 //import { BrowserRouter, Route, Routes } from 'react-router-dom';
 //import { Route } from 'lucide-react';
 
 
 function App() {
+  const dispatch = useDispatch()
+
+  const fetchUserDetails = async()=>{
+    const dataResponse = await fetch(SummaryApi.current_user.url,{
+      method: SummaryApi.current_user.method,
+      credentials: 'include'
+    })
+  
+    const dataApi = await dataResponse.json()
+
+    if(dataApi.success){
+      dispatch(setUserDetails(dataApi.data))
+    }
+  
+    console.log("data-user", dataResponse)
+  }
+  
+  useEffect(() =>{
+    fetchUserDetails()
+  },[]);
+
   return (
     <>
-     <Navbar/>
-     <div className="max-w-7xl mx-auto pt-20 px-6">
-      <PPrincipal/>
-      <AboutUs/>
-      <Services/>
-      <Testimonials/>
-      <Contacts/>
-      <Footer/>
-    </div>
+    <Context.Provider value={{
+      fetchUserDetails
+    }}>
+
+     <Outlet />
+    </Context.Provider>
     
     </>
   

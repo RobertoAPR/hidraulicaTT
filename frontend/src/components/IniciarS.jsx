@@ -1,17 +1,25 @@
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { FaEye } from "react-icons/fa";
-import React, {useState} from "react"
+import React, {useContext, useState} from "react"
 import { FaEyeSlash } from "react-icons/fa";
-import {Link, Outlet} from "react-router-dom";
+import {Link, Outlet, useNavigate} from "react-router-dom";
 import usua from '../assets/usu.png'
+import SummaryApi from '../common';
+import { toast } from 'react-toastify';
+import Context from '../context';
 
-export default function IniciarS() {
+
+const IniciarS = () => {
   const [showPassword,setShowPassword] = useState(false)
   const [data,setData] = useState({
     email: "",
     password: ""
   })
+  const navigate = useNavigate()
+  const {fetchUserDetails} = useContext(Context)
+
+
 
   const handleOnChange = (e) => {
     const {name, value} = e.target
@@ -24,10 +32,30 @@ export default function IniciarS() {
   })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
    e.preventDefault()
     // API call to send data
-    
+    const dataResponse = await fetch(SummaryApi.signIn.url,{
+      method: SummaryApi.signIn.method,
+      credentials: 'include',
+      headers: {
+        "content-type": "application/json"
+      },
+      body : JSON.stringify(data),
+    })
+
+    const dataApi = await dataResponse.json()
+
+    if(dataApi.success){
+        toast.success(dataApi.message)
+        navigate("/store")
+        fetchUserDetails()
+    }
+
+    if(dataApi.error){
+      toast.error(dataApi.message)
+    }
+
   }
 
   console.log("data login",data)
@@ -100,3 +128,5 @@ export default function IniciarS() {
     </>
   )
 }
+
+export default IniciarS;

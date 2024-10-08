@@ -4,9 +4,12 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { FaEye } from 'react-icons/fa'
 import { FaEyeSlash } from "react-icons/fa"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import usua from '../assets/usu.png'
 import imageTobasee from '../helpers/imageTobasee'
+import SummaryApi from '../common'
+import { toast } from 'react-toastify'
+
 
 const SignUp = () => {
   const [showPassword,setShowPassword] = useState(false)
@@ -19,6 +22,7 @@ const SignUp = () => {
     profilePic: "",
 
   })
+  const navigate = useNavigate()
 
   const handleOnChange = (e) => {
     const {name, value} = e.target
@@ -44,13 +48,39 @@ const SignUp = () => {
       })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
    e.preventDefault()
-    // API call to send data
-    
+
+   if(data.password === data.confirmPassword){
+      // API call to send data
+      
+      const dataResponse = await fetch(SummaryApi.signUP.url,{
+      method: SummaryApi.signUP.method,
+      headers: {
+        "content-type": "application/json"
+      },
+      body : JSON.stringify(data),
+      })
+
+    const dataApi = await dataResponse.json()
+
+    if(dataApi.success){
+      toast.success(dataApi.message)
+      navigate("/log")
+    }
+
+    if(dataApi.error){
+      toast.error(dataApi.message)
+    }
+  
+
+    console.log("data",dataApi)
+   }else{
+      console.log("Pleas check password")
+   }
+   
   }
 
-  console.log("data login",data)
   return (
     <>
     <p>esto es regustro de seccion</p>
@@ -140,7 +170,7 @@ const SignUp = () => {
              type={showConfirmPassword ? "text":"password"} 
              className='w-full h-full outline-none  bg-transparent'
              value={data.confirmPassword}
-             name='password'
+             name='confirmPassword'
              onChange={handleOnChange}
              required
              placeholder='Enter confirm password'

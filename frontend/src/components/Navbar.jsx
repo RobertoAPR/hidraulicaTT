@@ -34,9 +34,9 @@ const Navbar = () => {
                         
                             <Link to="/log" className="py-2 px-3 border rounded-md">Sign In</Link>
                        
-                        <a href="#" className="bg-gradient-to-r from-orange-500 to-orange 800 py-2 px-3 rounded-md">
+                        <Link to="/sign-up" className="bg-gradient-to-r from-orange-500 to-orange 800 py-2 px-3 rounded-md">
                             Create an account
-                        </a>
+                        </Link>
                     </div>
                     <div className="lg:hidden md:flex flex-col justify-end">
                         <button onClick={toggleNavbar}>
@@ -57,7 +57,7 @@ const Navbar = () => {
                         
                               <Link to="/log" className="py-2 px-3 border rounded-md">Sign In</Link>
                    
-                              <a href="#" className="bg-gradient-to-r from-orange-500 to-orange-800 py-2 px-3 rounded-md">
+                              <a href="/sign-up" className="bg-gradient-to-r from-orange-500 to-orange-800 py-2 px-3 rounded-md">
                               Create an account
                              </a>
                              </div>

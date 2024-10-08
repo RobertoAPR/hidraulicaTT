@@ -1,11 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo11 from "../../assets/logo11.png";
 import {Link, Outlet} from "react-router-dom";
 import { TbSearch } from "react-icons/tb";
 import { BiSolidUserCircle } from "react-icons/bi";
 import { FaCartShopping } from "react-icons/fa6";
+import { useDispatch, useSelector } from'react-redux';
+import SummaryApi from '../../common';
+import {toast} from 'react-toastify'
+import { setUserDetails } from '../../store/userSlice';
 
 const Header = () => {
+    const user = useSelector(state => state?.user?.user)
+    const dispatch = useDispatch()
+    const [menuDisplay,setMenuDisplay]= useState(false)
+
+    console.log("user header", user)
+
+    const handleLogout = async() => {
+        const fetchData = await fetch(SummaryApi.logout_user.url,{
+            method: SummaryApi.logout_user.method,
+            credentials: 'include'
+        })
+
+        const data = await fetchData.json()
+
+        if(data.success){
+           toast.success(data.message)
+           dispatch(setUserDetails(null))
+        }
+
+        if(data.error){
+            toast.error(data.message)
+        }
+    }
   return (
     <header className='h-16 shadow-md'>
         <div className='h-full container mx-auto flex items-center px-4 justify-between'>
@@ -24,9 +51,28 @@ const Header = () => {
             </div>
 
             <div className='flex items-center gap-4'>
-                <div className='text-3xl'>
-                    <BiSolidUserCircle/>
+             <div className='relative flex justify-center'>
+             <div className='text-3xl cursor-pointer relative flex justify-center' onClick={()=>setMenuDisplay(preve => !preve)}>
+                    {
+                        user?.profilePic ? (
+                            <img className="h-10 w-10 rounded-full" src={user?.profilePic} alt={user?.name}/>
+                        ) : (
+                            <BiSolidUserCircle/>
+                        )
+                        
+                    }
+                   
                 </div>
+               {
+                menuDisplay && (
+                    <div className='absolute bg-slate-200 bottom-0 top-11 h-fit p-2 shadow-lg rounded'>
+                    <nav>
+                        <Link to={"admin-panel"} className='whitespace-nowrap hover:bg-slate-100 p-2 text-slate-950'>Admin Panel</Link>
+                    </nav>
+                </div>
+                )
+               }
+             </div>
                 <div className='text-2xl relative'>
                     <span><FaCartShopping/></span>
                     <div className='bg-orange-600 text-white w-5 h-5 rounded-full p-1 flex items-center justify-center absolute -top-2 -right-3'>
@@ -35,11 +81,15 @@ const Header = () => {
                 </div>
 
                 <div className='flex space-x-6'>
-                <Link to="/log" className="py-2 px-3 border rounded-md">Sign In</Link>
+                    {
+                        user?._id ?(
+                            <button onClick={handleLogout} className="bg-gradient-to-r from-orange-500 to-orange-800 py-2 px-3 rounded-md">Logout</button>
+                        ) : (
+                            <Link to="/log" className="bg-gradient-to-r from-orange-500 to-orange-800 py-2 px-3 rounded-md">Sign In</Link>
+                        )
+                    }
+                
                    
-                   <a href="#" className="bg-gradient-to-r from-orange-500 to-orange-800 py-2 px-3 rounded-md">
-                   Create an account
-                  </a>
                 </div>
 
             </div>
