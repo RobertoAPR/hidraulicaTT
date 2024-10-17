@@ -76,7 +76,7 @@ const SignUp = () => {
 
     console.log("data",dataApi)
    }else{
-      console.log("Pleas check password")
+    toast.error("Pleas check password")
    }
    
   }

@@ -5,6 +5,9 @@ import Store from '../components/Store/Store';
 import ForgotPassword from '../pages/ForgotPassword';
 import SignUp from '../pages/SignUp';
 import PaginaInicio from '../components/PaginaInicio';
+import AdminPanel from '../pages/AdminPanel';
+import AllUsers from '../pages/AllUsers';
+import AllProducts from '../pages/AllProducts';
 
 
 
@@ -21,7 +24,7 @@ const router = createBrowserRouter([
             {
                 path: '/store',
                 element: <Store/>,// 404 page
-                children : []
+              
             },
             {
                 path: '/log',
@@ -33,9 +36,25 @@ const router = createBrowserRouter([
                 element: <ForgotPassword/>
             },
             {
-                path:"/sign-up",
+                path:'/sign-up',
                 element: <SignUp/>
-            }
+            },
+            {
+                path: '/admin-panel',
+                element: <AdminPanel/>,
+                children : [
+                    {
+                        path : "all-users",
+                        element : <AllUsers/>
+                    },
+                    {
+                        path : "all-products",
+                        element : <AllProducts/>
+                    }
+                ]
+            
+            },
+           
         ],
     },
    

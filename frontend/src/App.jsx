@@ -13,12 +13,14 @@ import { useEffect } from 'react';
 import Context from './context';
 import { useDispatch } from 'react-redux';
 import { setUserDetails } from './store/userSlice';
+import { ToastContainer } from 'react-toastify';
 
 //import { BrowserRouter, Route, Routes } from 'react-router-dom';
 //import { Route } from 'lucide-react';
 
 
 function App() {
+  
   const dispatch = useDispatch()
 
   const fetchUserDetails = async()=>{
@@ -33,7 +35,7 @@ function App() {
       dispatch(setUserDetails(dataApi.data))
     }
   
-    console.log("data-user", dataResponse)
+   
   }
   
   useEffect(() =>{
@@ -45,6 +47,7 @@ function App() {
     <Context.Provider value={{
       fetchUserDetails
     }}>
+      <ToastContainer />
 
      <Outlet />
     </Context.Provider>
