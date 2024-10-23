@@ -47,7 +47,7 @@ const ChangueUserRole = ({
   return (
     <div className='fixed top-0 bottom-0 left-0 right-0 w-full h-full z-10 flex justify-between items-center bg-slate-200 bg-opacity-50'>
       <div className='mx-auto bg-slate-500 shadow-md p-4 w-full max-w-sm'>
-        <button className='block ml-auto' onClick={onClose}>
+        <button className='block ml-auto w-fit text-xl hover:text-red-500 cursor-pointer' onClick={onClose}>
         <IoIosCloseCircle />
         </button>
         <h1 className='pb-4 text-lg font-medium'>Change User Role</h1>
