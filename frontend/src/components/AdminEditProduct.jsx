@@ -8,20 +8,21 @@ import { RiDeleteBinFill } from "react-icons/ri";
 import SummaryApi from '../common';
 import { toast } from'react-toastify';
 
-const UploadProduct = ({
+const AdminEditProduct = ({
     onClose,
-    fetchData
-  
+    productData,
+    fetchdata
+    
 }) => {
     const [data, setData] = useState({
-
-        productName: "",
-        brandName: "",
-        category : "",
-        productImage: [],
-        productDescription: "",
-        price: "",
-        selling: "",
+        ...productData,
+        productName: productData?.productName,
+        brandName: productData?.brandName,
+        category : productData?.category,
+        productImage: productData?.productImage || [],
+        productDescription: productData?.productDescription,
+        price: productData?.price,
+        selling: productData?.selling,
     })
 
     {/** const [uploadProductImageInput, setUploadProductImageInput] = useState("") */}
@@ -67,8 +68,8 @@ const UploadProduct = ({
     const handleSubmit = async(e) => {
         e.preventDefault()
        
-        const response = await fetch(SummaryApi.uploadProduct.url,{
-            method: SummaryApi.uploadProduct.method,
+        const response = await fetch(SummaryApi.updateProduct.url,{
+            method: SummaryApi.updateProduct.method,
             credentials: 'include',
             headers: {
                 "content-type": "application/json"
@@ -81,20 +82,19 @@ const UploadProduct = ({
         if(responseData.success){
             toast.success(responseData?.message)
             onClose()
-            fetchData()
+            fetchdata()
         }
         if(responseData.error){
             toast.error(responseData?.message)
         }
       
     }
-    
   return (
     <div className='fixed w-full h-full bg-slate-300 bg-opacity-50 top-0 left-0 right-0 bottom-0 flex justify-center items-center'>
       <div className='bg-slate-600 p-4 rounded w-full max-w-2xl h-full max-h-[80%] overflow-hidden'>
 
         <div className='flex justify-between items-center pb-3'>
-            <h2 className='font-bold text-lg'>Upload product</h2>
+            <h2 className='font-bold text-lg'>Edit product</h2>
             <button className='w-fit ml-auto text-xl hover:text-red-500 cursor-pointer' onClick={onClose}>
             <IoIosCloseCircle />
             </button>
@@ -221,7 +221,7 @@ const UploadProduct = ({
         required>
         </textarea>
 
-        <button className="bg-gradient-to-r from-orange-500 to-orange-800 py-2 px-3 rounded-md mb-6 ">Upload Peoduct</button>
+        <button className="bg-gradient-to-r from-orange-500 to-orange-800 py-2 px-3 rounded-md mb-6 ">Update Peoduct</button>
       </form>
       </div>
       {/** display image fulll screen*/}
@@ -235,4 +235,4 @@ const UploadProduct = ({
   )
 }
 
-export default UploadProduct
+export default AdminEditProduct
