@@ -10,6 +10,8 @@ import AllUsers from '../pages/AllUsers';
 import AllProducts from '../pages/AllProducts';
 import CategoryList from '../components/CategoryList';
 import CategoryProduct from '../pages/CategoryProduct';
+import ProductDetails from '../pages/ProductDetails';
+import Cart from '../pages/Cart';
 
 
 
@@ -46,15 +48,23 @@ const router = createBrowserRouter([
                 element: <CategoryProduct/>,
             },
             {
+                path : "product/:id",
+                element : <ProductDetails/>
+            },
+            {
+                path: 'cart',
+                element: <Cart/>
+            },
+            {
                 path: '/admin-panel',
                 element: <AdminPanel/>,
                 children : [
                     {
-                        path : "all-users",
+                        path : 'all-users',
                         element : <AllUsers/>
                     },
                     {
-                        path : "all-products",
+                        path : 'all-products',
                         element : <AllProducts/>
                     }
                 ]

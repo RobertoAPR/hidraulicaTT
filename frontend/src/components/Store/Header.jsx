@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import logo11 from "../../assets/logo11.png";
 import {Link, Outlet} from "react-router-dom";
 import { TbSearch } from "react-icons/tb";
@@ -9,11 +9,13 @@ import SummaryApi from '../../common';
 import {toast} from 'react-toastify'
 import { setUserDetails } from '../../store/userSlice';
 import ROLE from '../../common/role';
+import Context from '../../context';
 
 const Header = () => {
     const user = useSelector(state => state?.user?.user)
     const dispatch = useDispatch()
     const [menuDisplay,setMenuDisplay]= useState(false)
+    const context = useContext(Context)
 
     const handleLogout = async() => {
         const fetchData = await fetch(SummaryApi.logout_user.url,{
@@ -32,8 +34,10 @@ const Header = () => {
             toast.error(data.message)
         }
     }
+    console.log("header add to cart count", context)
   return (
-    <header className='h-16 shadow-md'>
+    
+    <header className='h-16 shadow-md bg-slate-400 fixed w-full z-40'>
         <div className='h-full container mx-auto flex items-center px-4 justify-between'>
             <div className="flex items-center flex-shrink-0">
             <img className="h-10 w-10 mr-2" src={logo11} alt="logo" />
@@ -43,7 +47,7 @@ const Header = () => {
             </div>
 
             <div className='hidden lg:flex items-center w-full justify-between max-w-sm border border-orange-600 rounded-full focus-within:shadow pl-2'>
-                <input type='text' placeholder='search product here...' className='w-full outline-none'/>
+                <input className='w-full outline-none placeholder-black bg-slate-400 text-black' type='text' placeholder='search product here...' />
                 <div className='text-lg min-w-[50px] h-8 bg-orange-600 flex items-center justify-center rounded-r-full text-white'>
                     <TbSearch/>
                 </div>
@@ -82,12 +86,19 @@ const Header = () => {
                 )
                }
              </div>
-                <div className='text-2xl relative'>
-                    <span><FaCartShopping/></span>
-                    <div className='bg-orange-600 text-white w-5 h-5 rounded-full p-1 flex items-center justify-center absolute -top-2 -right-3'>
-                        <p className='text-xs'>0</p>
-                    </div>
-                </div>
+              
+                    {
+                        user?._id && (
+                            <Link to={'/cart'} className='text-2xl relative'>
+                             <span><FaCartShopping/></span>
+                                <div className='bg-orange-600 text-white w-5 h-5 rounded-full p-1 flex items-center justify-center absolute -top-2 -right-3'>
+                                    <p className='text-xs'>{context?.cartProductCount}</p>
+                                </div>
+                            </Link>
+                        )
+                    }
+                   
+                
 
                 <div className='flex space-x-6'>
                     {

@@ -10,6 +10,4 @@ const productCategory = [
     { id : 9, label : "Válvulas Hidráulicas", value : "valvulas_hidraulicas"},
     { id : 10, label : "Manómetros y Accesorios de Medición", value : "manometros_accesorios_medicion"},
 ]
-
-
 export default productCategory

@@ -12,7 +12,12 @@ const updateUser = require('../controller/user/updateUser')
 const UploadProductController = require('../controller/product/uploadProduct')
 const getProductController = require('../controller/product/getProduct')
 const updateProductController = require('../controller/product/updateProduct')
-const getCategoryProduct = require('../controller/product/getCategoryProduct')
+const getCategoryProduct = require('../controller/product/getCategoryProductUno')
+const getCategoryWiseProduct = require('../controller/product/getCategoryWiseProduct')
+const getProductDetails = require('../controller/product/getProductDetails')
+const addToCartController = require('../controller/user/addToCartController')
+const countAddToCartProduct = require('../controller/user/countAddToCartProduct')
+const addToCartViewProduct = require('../controller/user/addToCartViewProduct')
 
 router.post('/signup', userSignUpController)
 router.post('/signin', userSignInController)
@@ -29,5 +34,13 @@ router.post('/upload-product',authToken, UploadProductController)
 router.get('/get-product',getProductController)
 router.post('/update-product',authToken,updateProductController)
 router.get('/get-categoryProduct',getCategoryProduct)
+router.post('/category-product',getCategoryWiseProduct)
+router.post('/product-details',getProductDetails)
 
+// carga de productos por el usuario
+router.post('/addtocart',authToken,addToCartController)
+router.get('/countAddToCartProduct',authToken,countAddToCartProduct)
+router.get('/view-card-product',authToken,addToCartViewProduct)
+
+// para probar la API
 module.exports = router

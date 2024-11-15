@@ -17,7 +17,7 @@ const IniciarS = () => {
     password: ""
   })
   const navigate = useNavigate()
-  const {fetchUserDetails} = useContext(Context)
+  const {fetchUserDetails, fetchUserAddToCart} = useContext(Context)
 
 
 
@@ -50,6 +50,7 @@ const IniciarS = () => {
         toast.success(dataApi.message)
         navigate("/store")
         fetchUserDetails()
+        fetchUserAddToCart()
     }
 
     if(dataApi.error){

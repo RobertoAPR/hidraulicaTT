@@ -19,7 +19,7 @@ const AdminPanel = () => {
   return (
     <>
     <Header/>
-    <div className='min-h-[calc(100vh-120px)] flex'>
+    <div className='pt-16 min-h-[calc(100vh-120px)] flex'>
 
         <aside className='bg-slate-600 min-h-full w-full max-w-60 customShadow p-2'>
           <div className='h-32 flex justify-center items-center flex-col'>
