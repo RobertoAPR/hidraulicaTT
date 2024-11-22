@@ -69,8 +69,9 @@ function App() {
       <ToastContainer 
       position='top-center'
       />
-      
+      <Header />
     <main className='min-h-[calc(100vh-120px)]'>
+      
     <Outlet />
     </main>
      

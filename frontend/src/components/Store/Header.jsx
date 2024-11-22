@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import logo11 from "../../assets/logo11.png";
-import {Link, Outlet} from "react-router-dom";
+import {Link, Outlet, useLocation, useNavigate} from "react-router-dom";
 import { TbSearch } from "react-icons/tb";
 import { BiSolidUserCircle } from "react-icons/bi";
 import { FaCartShopping } from "react-icons/fa6";
@@ -16,6 +16,15 @@ const Header = () => {
     const dispatch = useDispatch()
     const [menuDisplay,setMenuDisplay]= useState(false)
     const context = useContext(Context)
+    const navigate = useNavigate()
+    const searchInput = useLocation()
+    const URLSearch = new URLSearchParams(searchInput?.search)
+    const searchQuery = URLSearch.getAll("q")
+    const [search,setSearch] = useState(searchQuery)
+
+   
+    console.log("searchInput", searchInput?.search.split ("="))
+   
 
     const handleLogout = async() => {
         const fetchData = await fetch(SummaryApi.logout_user.url,{
@@ -34,7 +43,18 @@ const Header = () => {
             toast.error(data.message)
         }
     }
-    console.log("header add to cart count", context)
+   
+    const handleSearch = (e)=>{
+        const { value } = e.target
+       // setSearch(value)
+    
+        if(value){
+          navigate(`/search?q=${value}`)
+        }else{
+          navigate("/search")
+        }
+      }
+
   return (
     
     <header className='h-16 shadow-md bg-slate-400 fixed w-full z-40'>
@@ -47,7 +67,13 @@ const Header = () => {
             </div>
 
             <div className='hidden lg:flex items-center w-full justify-between max-w-sm border border-orange-600 rounded-full focus-within:shadow pl-2'>
-                <input className='w-full outline-none placeholder-black bg-slate-400 text-black' type='text' placeholder='search product here...' />
+                <input 
+                className='w-full outline-none placeholder-black bg-slate-400 text-black' 
+                type='text' 
+                placeholder='search product here...'
+                onChange={handleSearch} 
+                
+                />
                 <div className='text-lg min-w-[50px] h-8 bg-orange-600 flex items-center justify-center rounded-r-full text-white'>
                     <TbSearch/>
                 </div>

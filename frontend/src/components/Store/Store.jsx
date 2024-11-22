@@ -12,7 +12,7 @@ const Store = () => {
   
   return (
     <div>
-      <Header/>
+      
        <div className='pt-16'>
       
       <CategoryList/>
